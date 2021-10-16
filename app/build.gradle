@@ -1,5 +1,7 @@
 plugins {
     id 'com.android.application'
+    //id 'com.google.gms.google-services'
+
     //to read key from local.properties
     id 'com.google.secrets_gradle_plugin' version '0.5'
 }
@@ -15,7 +17,7 @@ android {
 
     defaultConfig {
         applicationId "com.memoryleak.instantcare"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -39,6 +41,12 @@ android {
 
     buildFeatures {
         viewBinding true
+    }
+
+    //for release
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
     }
 }
 
@@ -89,4 +97,8 @@ dependencies {
     //for debugging with retrofit
     //for logging http request by retrofit
     implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1'
+
+    //https://github.com/airbnb/lottie-android
+    //https://lottiefiles.com/blog/working-with-lottie/getting-started-with-lottie-animations-in-android-app
+    implementation "com.airbnb.android:lottie:4.1.0"
 }

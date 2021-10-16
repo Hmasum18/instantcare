@@ -6,6 +6,7 @@
     <color name="colorSecondary">#21ca92</color>
     <color name="colorSecondaryDark">#009864</color>
     <color name="colorSecondaryLight">#67fec3</color>
+    <color name="appBackgroundColor">#F2F6FE</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -13,4 +14,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+<!-- https://stackoverflow.com/questions/52175748/issue-change-border-color-or-box-stroke-for-unfocused-textinputlayout-in-androi-->
+    <color name="mtrl_textinput_default_box_stroke_color">#6379D9</color>
 </resources>

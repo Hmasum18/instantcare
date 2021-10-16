@@ -3,6 +3,7 @@ package com.memoryleak.instantcare.dagger.component;
 import com.memoryleak.instantcare.dagger.anotation.MainActivityScope;
 import com.memoryleak.instantcare.dagger.module.MainActivityModule;
 import com.memoryleak.instantcare.view.MainActivity;
+import com.memoryleak.instantcare.view.fragment.SignInFragment;
 
 import dagger.Subcomponent;
 
@@ -10,6 +11,8 @@ import dagger.Subcomponent;
 @Subcomponent(modules = {MainActivityModule.class})
 public interface MainActivityComponent {
     void inject(MainActivity mainActivity);
+
+    void inject(SignInFragment signInFragment);
 
     @Subcomponent.Builder
     interface Builder{
