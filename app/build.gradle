@@ -10,13 +10,13 @@ def localProperties = new Properties()
 localProperties.load(new FileInputStream(localPropertiesFile))
 
 android {
-    compileSdkVersion 31
-    buildToolsVersion "30.0.2"
+    compileSdkVersion 30
+    buildToolsVersion "30.0.1"
 
     defaultConfig {
         applicationId "com.memoryleak.instantcare"
         minSdkVersion 16
-        targetSdkVersion 31
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
@@ -67,6 +67,9 @@ dependencies {
     // google map dependency
     // https://developers.google.com/maps/documentation/android-sdk/start
     implementation 'com.google.android.gms:play-services-maps:17.0.1'
+
+    //for fused location
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
 
     //glide to show image from url
     // https://github.com/bumptech/glide

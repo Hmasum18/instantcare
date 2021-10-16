@@ -1,4 +1,4 @@
-package com.memoryleak.instantcare;
+package com.memoryleak.instantcare.view.fragment;
 
 import android.os.Bundle;
 
@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.memoryleak.instantcare.R;
 import com.memoryleak.instantcare.databinding.FragmentHomeBinding;
 
 public class HomeFragment extends Fragment implements OnMapReadyCallback {
