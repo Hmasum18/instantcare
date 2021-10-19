@@ -20,4 +20,9 @@
         android:name="com.memoryleak.instantcare.view.fragment.SignUpFragment"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" />
+    <fragment
+        android:id="@+id/bloodSearchFragment"
+        android:name="com.memoryleak.instantcare.view.fragment.BloodSearchFragment"
+        android:label="fragment_blood_search"
+        tools:layout="@layout/fragment_blood_search" />
 </navigation>

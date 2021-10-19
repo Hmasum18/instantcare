@@ -116,12 +116,12 @@
         android:text="Sign In"
         android:textColor="@android:color/white"
         app:cornerRadius="15dp"
-        app:layout_constraintBottom_toTopOf="@+id/button2"
+        app:layout_constraintBottom_toTopOf="@+id/google_sign_in_btn"
         app:layout_constraintEnd_toEndOf="@+id/textInputLayout2"
         app:layout_constraintStart_toStartOf="@+id/textInputLayout2" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/google_sign_in_btn"
         style="?materialButtonOutlinedStyle"
         android:layout_width="0dp"
         android:layout_height="64dp"

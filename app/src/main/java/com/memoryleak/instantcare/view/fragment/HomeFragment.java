@@ -11,23 +11,31 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.memoryleak.instantcare.R;
 import com.memoryleak.instantcare.databinding.FragmentHomeBinding;
+import com.memoryleak.instantcare.util.GoogleSignInHelper;
+import com.memoryleak.instantcare.view.MainActivity;
 
-public class HomeFragment extends Fragment implements OnMapReadyCallback {
+import javax.inject.Inject;
+
+public class HomeFragment extends Fragment{
     private static final String TAG = "HomeFragment";
+
+    private MainActivity mainActivity;
 
     // views
     private FragmentHomeBinding mVB;
     private GoogleMap mMap;
 
+    @Inject
+    GoogleSignInHelper googleSignInHelper;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mainActivity = (MainActivity) getActivity();
+        mainActivity.getMainActivityComponent().inject(this);
     }
 
     @Override
@@ -41,32 +49,26 @@ public class HomeFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        initDummyTextView();
+
+        mVB.signOutBtn.setOnClickListener(v -> {
+            Log.d(TAG, "onViewCreated: signing out from google.");
+            googleSignInHelper.signOut();
+            initDummyTextView();
+        });
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        // initialize map
-        initMap();
+    private void initDummyTextView() {
+       GoogleSignInAccount account = googleSignInHelper.getGoogleSignInAccount();
+       StringBuilder accountInfo = new StringBuilder();
+       accountInfo.append("name: ").append(account.getDisplayName()).append("\n")
+       .append("Email: ").append(account.getEmail()).append("\n")
+       .append("ImageUrl: ").append(account.getPhotoUrl()).append("\n")
+       .append("id: ").append(account.getId()).append("\n")
+       .append(account.zab());
+
+       mVB.dummy.setText(accountInfo.toString());
     }
 
-    /**
-     * get the map fragment and start the MapAsync
-     */
-    private void initMap() {
-        Log.d(TAG, "initMap: ");
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
-                .findFragmentById(R.id.googleMap);
-        try {
-            mapFragment.getMapAsync(this);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public void onMapReady(@NonNull GoogleMap googleMap) {
-        this.mMap = googleMap;
-    }
 }

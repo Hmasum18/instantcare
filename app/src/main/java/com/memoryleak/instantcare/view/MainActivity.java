@@ -18,14 +18,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initDagger().inject(this);
+        getMainActivityComponent().inject(this);
     }
 
     /**
      * creates {@link MainActivityComponent} if not created yet
      * @return the {@link MainActivityComponent} instance
      */
-    public MainActivityComponent initDagger(){
+    public MainActivityComponent getMainActivityComponent(){
         if(mainActivityComponent == null){
             AppComponent appComponent = ((App) getApplication()).getAppComponent();
             mainActivityComponent = appComponent.activityComponentBuilder()

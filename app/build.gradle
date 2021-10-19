@@ -101,4 +101,8 @@ dependencies {
     //https://github.com/airbnb/lottie-android
     //https://lottiefiles.com/blog/working-with-lottie/getting-started-with-lottie-animations-in-android-app
     implementation "com.airbnb.android:lottie:4.1.0"
+
+    //google sign in
+    // https://developers.google.com/identity/sign-in/android/start-integrating
+    implementation 'com.google.android.gms:play-services-auth:19.2.0'
 }
