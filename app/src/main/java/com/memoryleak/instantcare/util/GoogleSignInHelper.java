@@ -97,6 +97,7 @@ public class GoogleSignInHelper{
     }
 
     public GoogleSignInAccount getGoogleSignInAccount(){
+        mGoogleSignInAccount = GoogleSignIn.getLastSignedInAccount(context);
         return mGoogleSignInAccount;
     }
 

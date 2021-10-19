@@ -7,10 +7,15 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
+import android.transition.Transition;
+import android.transition.TransitionInflater;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnticipateInterpolator;
+import android.view.animation.AnticipateOvershootInterpolator;
+import android.view.animation.LinearInterpolator;
 
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.memoryleak.instantcare.R;
@@ -37,6 +42,20 @@ public class SignInFragment extends Fragment implements GoogleSignInHelper.OnGoo
         super.onCreate(savedInstanceState);
         mainActivity = (MainActivity) getActivity();
         mainActivity.getMainActivityComponent().inject(this);
+
+        initTransitions();
+    }
+
+    /**
+     * @see <a href="https://thoughtbot.com/blog/android-interpolators-a-visual-guide">This</a>
+     */
+    private void initTransitions(){
+        TransitionInflater inflater = TransitionInflater.from(getContext());
+
+        //exit transition
+        Transition slide = inflater.inflateTransition(android.R.transition.slide_left); // slide from right
+        slide.setInterpolator(new AnticipateInterpolator());
+        setExitTransition(slide);
     }
 
     @Override
@@ -49,8 +68,12 @@ public class SignInFragment extends Fragment implements GoogleSignInHelper.OnGoo
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        mVB.signUpBtn.setOnClickListener(v -> {
+        mVB.signUpTv.setOnClickListener(v -> {
             NavHostFragment.findNavController(this).navigate(R.id.signUpFragment);
+        });
+
+        mVB.signInBtn.setOnClickListener(v -> {
+            NavHostFragment.findNavController(this).navigate(R.id.homeFragment);
         });
 
         googleSignInHelper.setOnGoogleSignInSuccessListener(this);
